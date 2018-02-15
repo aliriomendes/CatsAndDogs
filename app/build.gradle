@@ -20,12 +20,37 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    ext.supportLibVersion = '26.1.0'
+    ext.okhttpVersion = '3.9.1'
+    ext.picassoVersion = '2.5.2'
+    ext.archVersion = '1.1.0'
+    ext.constraintVersion = '1.0.2'
+    ext.junitVersion = '4.12'
+    ext.runnerVersion = '1.0.1'
+    ext.espressoVersion = '3.0.1'
+    ext.daggerVersion = '2.14.1'
+    ext.gsonVersion = '2.8.2'
+    ext.retrofitVersion = '2.1.0'
+    ext.gsonConverterVersion = '2.1.0'
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:$supportLibVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibVersion"
+    implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
+    implementation "android.arch.lifecycle:extensions:$archVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compile "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+    compile "com.squareup.picasso:picasso:$picassoVersion"
+    compile  "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    compile "com.squareup.retrofit2:converter-gson:$gsonConverterVersion"
+
+
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "com.android.support.test:runner:$runnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
