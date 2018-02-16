@@ -1,40 +1,37 @@
 package com.aliriomendes.catsanddogs;
 
+import android.app.Activity;
 import android.app.Application;
 
-import com.aliriomendes.catsanddogs.data.FlickrService;
-import com.aliriomendes.catsanddogs.data.entities.Feed;
-import com.aliriomendes.catsanddogs.di.CatsAndDogsAppComponent;
-import com.aliriomendes.catsanddogs.di.ContextModule;
-import com.aliriomendes.catsanddogs.di.DaggerCatsAndDogsAppComponent;
-import com.squareup.picasso.Picasso;
+import com.aliriomendes.catsanddogs.di.AppModule;
+import com.aliriomendes.catsanddogs.di.DaggerAppComponent;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
 
 /**
  * Created by aliriomendes on 15/02/2018.
  */
 
-public class CatsAndDogsApplication extends Application {
-    private Picasso picasso;
-    private FlickrService flickrService;
+public class CatsAndDogsApplication extends Application implements HasActivityInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        CatsAndDogsAppComponent component = DaggerCatsAndDogsAppComponent.builder().contextModule(new ContextModule(this)).build();
-
-        picasso = component.getPicasso();
-        flickrService = component.getFlickrService();
-
+        DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
+                .build()
+                .inject(this);
     }
 
-    public Picasso getPicasso() {
-        return picasso;
-    }
-
-    public FlickrService getFlickrService() {
-        return flickrService;
+    @Override
+    public AndroidInjector<Activity> activityInjector() {
+        return dispatchingAndroidInjector;
     }
 }

@@ -10,6 +10,6 @@ import retrofit2.http.GET;
  */
 
 public interface FlickrService {
-    @GET("services/feeds/photos_public.gne?lang=en-us&format=json&nojsoncallback=1")
+    @GET(ApiConstants.ENDPOINT_FEED)
     Call<Feed> loadFeed();
 }

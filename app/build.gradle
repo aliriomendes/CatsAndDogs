@@ -43,9 +43,14 @@ dependencies {
     compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
     compile "com.squareup.picasso:picasso:$picassoVersion"
     compile  "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    compile "com.google.dagger:dagger:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
     compile "com.squareup.retrofit2:converter-gson:$gsonConverterVersion"
+
+    compile "com.google.dagger:dagger:$daggerVersion"
+    compile "com.google.dagger:dagger-android:$daggerVersion"
+    compile "com.google.dagger:dagger-android-support:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+
 
 
     testImplementation "junit:junit:$junitVersion"

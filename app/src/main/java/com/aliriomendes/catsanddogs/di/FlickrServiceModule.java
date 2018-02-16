@@ -5,6 +5,8 @@ import com.aliriomendes.catsanddogs.data.FlickrService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -17,20 +19,20 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module(includes = NetworkModule.class)
 public class FlickrServiceModule {
     @Provides
-    @CatsAndDogsApplicationScope
+    @Singleton
     public FlickrService flickrService(Retrofit retrofit){
         return retrofit.create(FlickrService.class);
     }
 
     @Provides
-    @CatsAndDogsApplicationScope
+    @Singleton
     public Gson gson(){
         GsonBuilder gsonBuilder = new GsonBuilder();
         return gsonBuilder.create();
     }
 
     @Provides
-    @CatsAndDogsApplicationScope
+    @Singleton
     public Retrofit retrofit(OkHttpClient okHttpClient, Gson gson){
         return new Retrofit.Builder()
                 .baseUrl(ApiConstants.ENDPOINT)
