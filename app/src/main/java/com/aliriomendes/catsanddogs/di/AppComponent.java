@@ -1,6 +1,7 @@
 package com.aliriomendes.catsanddogs.di;
 
 import com.aliriomendes.catsanddogs.CatsAndDogsApplication;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Singleton;
 
@@ -14,6 +15,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Singleton
 @Component(modules = { FlickrServiceModule.class, PicassoModule.class, AppModule.class, AndroidSupportInjectionModule.class})
 public interface AppComponent extends AndroidInjector<AppComponent> {
+    Picasso getPicasso();
     @Component.Builder
     interface Builder {
         Builder appModule(AppModule appModule);

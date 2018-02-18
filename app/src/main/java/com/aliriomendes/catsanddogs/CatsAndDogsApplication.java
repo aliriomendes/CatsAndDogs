@@ -5,6 +5,7 @@ import android.app.Application;
 
 import com.aliriomendes.catsanddogs.di.AppModule;
 import com.aliriomendes.catsanddogs.di.DaggerAppComponent;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -18,8 +19,8 @@ import dagger.android.HasActivityInjector;
 
 public class CatsAndDogsApplication extends Application implements HasActivityInjector {
 
-    @Inject
-    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
+    @Inject DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
+    @Inject Picasso picasso;
 
     @Override
     public void onCreate() {
@@ -28,6 +29,8 @@ public class CatsAndDogsApplication extends Application implements HasActivityIn
                 .appModule(new AppModule(this))
                 .build()
                 .inject(this);
+        //picasso.setIndicatorsEnabled(true);
+        Picasso.setSingletonInstance(picasso);
     }
 
     @Override

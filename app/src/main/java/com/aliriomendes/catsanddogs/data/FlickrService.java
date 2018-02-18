@@ -11,5 +11,11 @@ import retrofit2.http.GET;
 
 public interface FlickrService {
     @GET(ApiConstants.ENDPOINT_FEED)
-    Call<Feed> loadFeed();
+    Call<Feed> loadPublicFeed();
+
+    @GET(ApiConstants.ENDPOINT_CATS_FEED)
+    Call<Feed> loadCatsFeed();
+
+    @GET(ApiConstants.ENDPOINT_DOGS_FEED)
+    Call<Feed> loadDogsFeed();
 }
