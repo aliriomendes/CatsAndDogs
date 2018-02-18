@@ -37,7 +37,6 @@ dependencies {
     ext.retrofitVersion = '2.1.0'
     ext.gsonConverterVersion = '2.1.0'
     ext.butterknifeVersion = '8.8.1'
-
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:$supportLibVersion"
     implementation "com.android.support:recyclerview-v7:$supportLibVersion"
@@ -51,19 +50,15 @@ dependencies {
     implementation "com.squareup.picasso:picasso:$picassoVersion"
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$gsonConverterVersion"
-
     implementation "com.google.dagger:dagger:$daggerVersion"
     implementation "com.google.dagger:dagger-android:$daggerVersion"
     implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
     annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
-
     implementation "com.jakewharton:butterknife:$butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
-
-
-
     testImplementation "junit:junit:$junitVersion"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttpVersion"
     androidTestImplementation "com.android.support.test:runner:$runnerVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

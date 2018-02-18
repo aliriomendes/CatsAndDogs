@@ -13,11 +13,11 @@ data class FeedItem(
         @SerializedName("title")        val title: String?,
         @SerializedName("link")         val link: String?,
         @SerializedName("media")        val media: Media?,
-        @SerializedName("dateTaken")    val dateTaken: Date?,
+        @SerializedName("date_taken")    val dateTaken: Date?,
         @SerializedName("description")  val description: String,
         @SerializedName("published")    val published: Date?,
         @SerializedName("author")       val author: String?,
-        @SerializedName("authorId")     val authorId: String?,
+        @SerializedName("author_id")     val authorId: String?,
         @SerializedName("tags")         val tags: String?) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
