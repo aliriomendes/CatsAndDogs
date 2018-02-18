@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="feed_category_item_title_marginTop">30dp</dimen>
+    <dimen name="feed_category_item_title_marginLeft">10dp</dimen>
+    <dimen name="photo_item_image_width">150dp</dimen>
+    <dimen name="photo_item_image_height">150dp</dimen>
+    <dimen name="photo_item_padding">5dp</dimen>
+    <dimen name="photo_item_margin">5dp</dimen>
+    <dimen name="photo_title_text_size">18sp</dimen>
+    <dimen name="category_title_text_size">20sp</dimen>
+</resources>
