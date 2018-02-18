@@ -1,10 +1,13 @@
 package com.aliriomendes.catsanddogs.data.entities
+import com.google.gson.annotations.SerializedName
 import java.util.*
 /**
  * Created by aliriomendes on 13/02/2018.
  */
-class Feed(val title: String, val link: String, val description:String, val modified: Date, val generator: String, val items: List<FeedItem>){
-    override fun toString(): String {
-        return "Feed(title='$title', link='$link', description='$description', modified=$modified, generator='$generator', items=$items)"
-    }
-}
+data class Feed(
+        @SerializedName("title")        val title: String,
+        @SerializedName("link")         val link: String,
+        @SerializedName("description")  val description:String,
+        @SerializedName("modified")     val modified: Date,
+        @SerializedName("generator")    val generator: String,
+        @SerializedName("items")        val items: List<FeedItem>)

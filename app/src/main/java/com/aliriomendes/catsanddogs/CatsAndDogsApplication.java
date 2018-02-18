@@ -29,7 +29,7 @@ public class CatsAndDogsApplication extends Application implements HasActivityIn
                 .appModule(new AppModule(this))
                 .build()
                 .inject(this);
-        //picasso.setIndicatorsEnabled(true);
+        picasso.setIndicatorsEnabled(true);
         Picasso.setSingletonInstance(picasso);
     }
 
