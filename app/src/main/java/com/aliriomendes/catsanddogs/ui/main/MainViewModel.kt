@@ -20,13 +20,17 @@ import javax.inject.Inject
 
 class MainViewModel @Inject
 constructor(private val flickrRepository: FlickrRepository) : ViewModel() {
-    private val TAG = "MainViewModel"
+    private val TAG:String = "MainViewModel"
+    private val CATS_POSITION = 0
+    private val DOGS_POSITION = 1
+    private val PUBLIC_FEED_POSITION = 2
+
     val categoryList: MutableList<FeedCategory> = mutableListOf()
     val feedCategoriesLiveData = MutableLiveData<List<FeedCategory>>()
     init {
-        categoryList.add(FeedCategory(FeedCategoryType.CATS, null))
-        categoryList.add(FeedCategory(FeedCategoryType.DOGS, null))
-        categoryList.add(FeedCategory(FeedCategoryType.PUBLIC_FEED, null))
+        categoryList.add(CATS_POSITION, FeedCategory(FeedCategoryType.CATS, null))
+        categoryList.add(DOGS_POSITION, FeedCategory(FeedCategoryType.DOGS, null))
+        categoryList.add(PUBLIC_FEED_POSITION, FeedCategory(FeedCategoryType.PUBLIC_FEED, null))
     }
 
 
@@ -38,7 +42,7 @@ constructor(private val flickrRepository: FlickrRepository) : ViewModel() {
 
     private val catsFeedCallback = object : Callback<Feed> {
         override fun onResponse(call: Call<Feed>, response: Response<Feed>) {
-            categoryList[0].feedItems = response.body().items
+            categoryList[CATS_POSITION].feedItems = response.body().items.sortedByDescending { it.dateTaken }
             feedCategoriesLiveData.value = categoryList
         }
         override fun onFailure(call: Call<Feed>, t: Throwable) {
@@ -47,7 +51,7 @@ constructor(private val flickrRepository: FlickrRepository) : ViewModel() {
     }
     private val dogsFeedCallback =  object : Callback<Feed> {
         override fun onResponse(call: Call<Feed>, response: Response<Feed>) {
-            categoryList[1].feedItems = response.body().items
+            categoryList[DOGS_POSITION].feedItems = response.body().items.sortedByDescending { it.dateTaken }
             feedCategoriesLiveData.value = categoryList
         }
 
@@ -57,7 +61,7 @@ constructor(private val flickrRepository: FlickrRepository) : ViewModel() {
     }
     private val publicFeedCallback =  object : Callback<Feed> {
         override fun onResponse(call: Call<Feed>, response: Response<Feed>) {
-            categoryList[2].feedItems = response.body().items
+            categoryList[PUBLIC_FEED_POSITION].feedItems = response.body().items.sortedByDescending { it.dateTaken }
             feedCategoriesLiveData.value = categoryList
         }
 

@@ -69,7 +69,7 @@ public class FeedItemAdapter extends BaseAdapter<FeedItemAdapter.FeedItemViewHol
 
         void updateView(FeedItem feedItem) {
             this.feedItem = feedItem;
-            Picasso.with(itemView.getContext()).load(feedItem.getMedia().getM()).into(imageView);
+            Picasso.with(itemView.getContext()).load(feedItem.getMedia().getImage()).into(imageView);
             title.setText(feedItem.getTitle());
         }
     }

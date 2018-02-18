@@ -1,5 +1,6 @@
 package com.aliriomendes.catsanddogs.di;
 
+import com.aliriomendes.catsanddogs.ui.detail.DetailActivity;
 import com.aliriomendes.catsanddogs.ui.main.MainActivity;
 
 import dagger.Module;
@@ -10,5 +11,8 @@ import dagger.android.ContributesAndroidInjector;
 @Module(includes = ViewModelModule.class)
 public abstract class ActivityBuilderModule {
     @ContributesAndroidInjector
-    abstract MainActivity contributeActivityInjector();
+    abstract MainActivity contributeMainActivityInjector();
+
+    @ContributesAndroidInjector
+    abstract DetailActivity contributeDetailActivityInjector();
 }
