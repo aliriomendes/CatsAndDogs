@@ -6,4 +6,6 @@
     <string name="feed_item_key">feed_item_key</string>
     <string name="share_action_title">Share</string>
     <string name="detail_go_btn_text">Go</string>
+    <string name="open_link_error_message">Was not possible to open link!!!</string>
+    <string name="share_link_error_message">Was not possible to share link!!!</string>
 </resources>

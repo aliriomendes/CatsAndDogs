@@ -1,21 +1,24 @@
 package com.aliriomendes.catsanddogs.ui.detail;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.aliriomendes.catsanddogs.R;
 import com.aliriomendes.catsanddogs.data.entities.FeedItem;
 import com.aliriomendes.catsanddogs.ui.base.BaseActivity;
-import com.aliriomendes.catsanddogs.ui.main.MainViewModel;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class DetailActivity extends BaseActivity {
 
@@ -57,11 +60,34 @@ public class DetailActivity extends BaseActivity {
                 supportFinishAfterTransition();
                 return true;
             case R.id.share_action:
-
+                shareLink();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void shareLink(){
+        try {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_SUBJECT, feedItem.getTitle());
+            intent.putExtra(Intent.EXTRA_TEXT, feedItem.getLink());
+            startActivity(Intent.createChooser(intent, "Share URL"));
+        }catch (Exception ex){
+            Toast.makeText(this, R.string.share_link_error_message, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @OnClick(R.id.go_button)
+    public void goButtonClick(View view) {
+        try {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(feedItem.getLink()));
+            startActivity(browserIntent);
+        }catch (Exception ex){
+            Toast.makeText(this, R.string.open_link_error_message, Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     public boolean onSupportNavigateUp(){
         finish();
