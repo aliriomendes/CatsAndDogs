@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CatsAndDogs</string>
+    <string name="cats">Cats</string>
+    <string name="ki_labs">KI Labs</string>
+</resources>

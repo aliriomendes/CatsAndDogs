@@ -1,0 +1,71 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.aliriomendes.catsanddogs"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    ext.supportLibVersion = '26.1.0'
+    ext.okhttpVersion = '3.9.1'
+    ext.picassoVersion = '2.5.2'
+    ext.archVersion = '1.1.0'
+    ext.constraintVersion = '1.0.2'
+    ext.junitVersion = '4.12'
+    ext.runnerVersion = '1.0.1'
+    ext.espressoVersion = '3.0.1'
+    ext.daggerVersion = '2.14.1'
+    ext.gsonVersion = '2.8.2'
+    ext.retrofitVersion = '2.1.0'
+    ext.gsonConverterVersion = '2.1.0'
+    ext.butterknifeVersion = '8.8.1'
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "com.android.support:appcompat-v7:$supportLibVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibVersion"
+    implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
+    implementation "android.arch.lifecycle:extensions:$archVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compile "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+    compile "com.squareup.picasso:picasso:$picassoVersion"
+    compile  "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$gsonConverterVersion"
+
+    compile "com.google.dagger:dagger:$daggerVersion"
+    compile "com.google.dagger:dagger-android:$daggerVersion"
+    compile "com.google.dagger:dagger-android-support:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+
+    compile "com.jakewharton:butterknife:$butterknifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+
+
+
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "com.android.support.test:runner:$runnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
+}
