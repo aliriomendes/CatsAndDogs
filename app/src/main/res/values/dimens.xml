@@ -8,4 +8,5 @@
     <dimen name="photo_item_margin">5dp</dimen>
     <dimen name="photo_title_text_size">18sp</dimen>
     <dimen name="category_title_text_size">20sp</dimen>
+    <dimen name="go_button_bottom_margin">5dp</dimen>
 </resources>
